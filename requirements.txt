@@ -1,0 +1,11 @@
+flask
+
+numpy
+eyed3
+pydub
+scipy
+sklearn
+pyAudioAnalysis
+
+
+
