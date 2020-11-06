@@ -11,6 +11,24 @@ pip install --upgrade pip
 pip install -r requirements.txt
 ```
 
+http://3.86.17.19:8083/api/segment
+
+
+
+{
+    "type": "inaSpeechSegmenter", 
+    "path": "data/",
+    "file": "test.wav"
+}
+
+
+{
+    "type": "pyAudioAnalysis", 
+    "path": "data/",
+    "file": "test.wav"
+}
+
+
 
 #### threading
 
@@ -33,3 +51,5 @@ pyAudioAnalysis
 
 tensorflow
 inaSpeechSegmenter
+
+

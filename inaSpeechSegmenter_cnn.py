@@ -9,7 +9,7 @@ class inaSpeechSegmenter_cnn:
         print("\nsegs...")
 
         segmentation = self.seg(path + file)
-        print(segmentation)
+        # print(segmentation)
 
         segs=[]
         for seg in segmentation:
@@ -19,8 +19,8 @@ class inaSpeechSegmenter_cnn:
 
         return segs
 
+if __name__ == "__main__":
+    path = 'data/'
+    file= 'test.wav'
 
-path = 'data/'
-file= 'test.wav'
-
-inaSpeechSegmenter_cnn().segs(path, file)
+    inaSpeechSegmenter_cnn().segs(path, file)
