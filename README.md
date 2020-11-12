@@ -53,3 +53,12 @@ tensorflow
 inaSpeechSegmenter
 
 
+# test
+svm  2.92  [[0.06, 1.28]]
+cnn  2.9  [['speech', 0, 2900]]
+2.9 2.92
+
+# test1
+svm  3.6  [[0.36, 3.58]]
+cnn  3.58  [['notSpeech', 0, 400], ['speech', 400, 3580]]
+3.6 3.6

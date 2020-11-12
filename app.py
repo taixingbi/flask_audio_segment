@@ -1,14 +1,19 @@
+
 from flask import Flask, request, render_template
 from flask import jsonify
 
-from pyAudioAnalysis_svm import pyAudioAnalysis_svm
-from inaSpeechSegmenter_cnn import inaSpeechSegmenter_cnn
+import tensorflow
+# from inaSpeechSegmenter import Segment
+# from test import test
+
+# from svm_pyAudioAnalysis import svm_pyAudioAnalysis
+# from cnn_inaSpeechSegmenter import cnn_inaSpeechSegmenter
+
 import time
 
 app = Flask(__name__)
 
-
-cnn= inaSpeechSegmenter_cnn()
+# cnn= cnn_inaSpeechSegmenter()
 
 @app.route('/', methods=['GET'])
 def index():
@@ -29,28 +34,40 @@ def index_post():
     data= request.json
     print(data)
 
-    type =data['type']
+    model =data['model']
     path =data['path']
     file =data['file']
 
-    segments= None
+    segments= []
 
     st = time.time()
 
-    if type=='cnn':
-        segments= cnn.segs(path, file)
+    if model=='cnn':
+        try:
+            segments= cnn.segmentation(path, file)
+        except:
+            try:
+                segments= svm_pyAudioAnalysis().segmentation(path, file)
+            except:
+                print(" somethingwrong both seg")
 
-    elif type=='svm': 
-        segments= pyAudioAnalysis_svm(path, file)
+    elif model=='svm': 
+        try: 
+            segments= svm_pyAudioAnalysis().segmentation(path, file)
+        except:
+            try: 
+                segments= cnn.segmentation(path, file)
+            except:
+                print(" somethingwrong both seg")
 
     else:
-        segments= 'type is not cnn or svm'
+        segments= 'model is not cnn or svm'
 
     elapsed = time.time() - st
     print(elapsed)
 
     data_res = jsonify(
-        type= type, # inaSpeechSegmenter
+        model= model, # inaSpeechSegmenter
         path= path,
         file= file,
         segments= segments,
@@ -59,8 +76,15 @@ def index_post():
 
     return data_res
 
+app.run(host='0.0.0.0', port='8080', debug=True)
+
+
+
+
+
 # {
 # 	"type": "inaSpeechSegmenter", #pyAudioAnalysis
 #     "path": "data/",
 #     "file": "test.wav"
 # }
+

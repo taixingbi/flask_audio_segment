@@ -5,7 +5,13 @@ eyed3
 pydub
 scipy
 sklearn
+hmmlearn
+matplotlib
+tqdm
+plotly
 pyAudioAnalysis
 
+tensorflow
+inaSpeechSegmenter
 
 
