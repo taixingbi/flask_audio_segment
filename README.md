@@ -20,6 +20,14 @@ pip install wheel
 pip install -r requirements.txt
 ```
 
+##### ec2 
+ubuntu 20.04 xlarge. 
+
+AMI ml-msk-webCollectData-audio-preprocessing-copy
+
+
+
+
 http://34.203.38.59:8083/api/segment
 
 {

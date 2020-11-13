@@ -26,7 +26,7 @@ def api(id):
     return data
 
 
-@app.route('/api/segment/file', methods=['POST'])
+@app.route('/api/segment', methods=['POST'])
 def index_post():
     data= request.json
     print(data)
