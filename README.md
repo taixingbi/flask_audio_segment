@@ -17,9 +17,10 @@ source myvenv/bin/activate
 pip install --upgrade pip
 pip install -r requirements.txt
 ```
-
+```
+pip install
 sudo apt install ffmpeg
-
+```
 
 
 http://3.86.17.19:8083/api/segment
