@@ -8,6 +8,8 @@ https://www.digitalocean.com/community/tutorials/how-to-install-the-django-web-f
 ```
 sudo apt update
 sudo apt install python3-pip python3-venv
+sudo pip install wheel
+sudo apt install ffmpeg
 ```
 
 #### run
@@ -17,10 +19,7 @@ source myvenv/bin/activate
 pip install --upgrade pip
 pip install -r requirements.txt
 ```
-```
-pip install wheel
-sudo apt install ffmpeg
-```
+
 
 
 http://3.86.17.19:8083/api/segment
