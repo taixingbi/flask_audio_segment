@@ -5,7 +5,7 @@ flask run --host=0.0.0.0 --port=8083
 
 #### run
 ```
-python3.7 -m venv myvenv
+python3 -m venv myvenv
 source myvenv/bin/activate
 pip install --upgrade pip
 pip install -r requirements.txt
