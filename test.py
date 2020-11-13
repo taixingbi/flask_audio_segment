@@ -1,5 +1,12 @@
-from pyAudioAnalysis import audioBasicIO, audioSegmentation
+from flask import Flask, request, render_template
+from flask import jsonify
 
+import tensorflow
+from inaSpeechSegmenter import segment
+# from test import test
+
+# from svm_pyAudioAnalysis import svm_pyAudioAnalysis
+# from cnn_inaSpeechSegmenter import cnn_inaSpeechSegmenter
 # class svm_pyAudioAnalysis:
 #     def __init__(self):
 #         print("\npyAudioAnalysis_svm init...")
@@ -29,3 +36,5 @@ from pyAudioAnalysis import audioBasicIO, audioSegmentation
 
 def test():
     print("test")
+
+test()

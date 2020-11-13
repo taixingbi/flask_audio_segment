@@ -2,12 +2,8 @@
 from flask import Flask, request, render_template
 from flask import jsonify
 
-import tensorflow
-# from inaSpeechSegmenter import Segment
-# from test import test
-
-# from svm_pyAudioAnalysis import svm_pyAudioAnalysis
-# from cnn_inaSpeechSegmenter import cnn_inaSpeechSegmenter
+from svm_pyAudioAnalysis import svm_pyAudioAnalysis
+from cnn_inaSpeechSegmenter import cnn_inaSpeechSegmenter
 
 import time
 
@@ -29,7 +25,8 @@ def api(id):
 
     return data
 
-@app.route('/api/segment', methods=['POST'])
+
+@app.route('/api/segment/file', methods=['POST'])
 def index_post():
     data= request.json
     print(data)
@@ -76,7 +73,7 @@ def index_post():
 
     return data_res
 
-app.run(host='0.0.0.0', port='8080', debug=True)
+app.run(host='0.0.0.0', port='8083', debug=True)
 
 
 

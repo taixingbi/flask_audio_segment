@@ -1,6 +1,6 @@
 #### start
 ```
-flask run --host=0.0.0.0 --port=8083
+python app.py
  ```  
 
 #### ubuntu install flask
@@ -20,21 +20,17 @@ pip install wheel
 pip install -r requirements.txt
 ```
 
-
-
-http://3.86.17.19:8083/api/segment
-
-
+http://34.203.38.59:8083/api/segment
 
 {
-    "type": "inaSpeechSegmenter", 
+    "model": "svm", 
     "path": "data/",
     "file": "test.wav"
 }
 
 
 {
-    "type": "pyAudioAnalysis", 
+    "model": "cnn", 
     "path": "data/",
     "file": "test.wav"
 }
