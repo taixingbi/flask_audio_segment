@@ -18,7 +18,7 @@ pip install --upgrade pip
 pip install -r requirements.txt
 ```
 ```
-pip install
+pip install wheel
 sudo apt install ffmpeg
 ```
 
