@@ -35,27 +35,27 @@ def index_post():
     path =data['path']
     file =data['file']
 
-    segments= []
+    segments= None #
 
     st = time.time()
 
     if model=='cnn':
         try:
-            segments= cnn.segmentation(path, file)
+            segments= cnn.segmentation(path, file)  #could be  []
         except:
             try:
                 segments= svm_pyAudioAnalysis().segmentation(path, file)
             except:
-                print(" somethingwrong both seg")
+                print("cnn somethingwrong both seg")
 
     elif model=='svm': 
         try: 
-            segments= svm_pyAudioAnalysis().segmentation(path, file)
+            segments= svm_pyAudioAnalysis().segmentation(path, file)  #could be  []
         except:
             try: 
                 segments= cnn.segmentation(path, file)
             except:
-                print(" somethingwrong both seg")
+                print("svm somethingwrong both seg")
 
     else:
         segments= 'model is not cnn or svm'
@@ -67,7 +67,7 @@ def index_post():
         model= model, # inaSpeechSegmenter
         path= path,
         file= file,
-        segments= segments,
+        segments= segments, # None []  [['notSpeech', 0, 400], ['speech', 400, 3580]]
         elapsed= elapsed,
     )
 
