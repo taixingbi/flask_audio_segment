@@ -4,7 +4,7 @@ flask run --host=0.0.0.0 --port=8083
  ```  
 
 #### ubuntu install flask
-https://www.linuxfordevices.com/tutorials/ubuntu/install-flask-ubuntu
+https://www.digitalocean.com/community/tutorials/how-to-install-the-django-web-framework-on-ubuntu-20-04
 
 #### run
 ```
