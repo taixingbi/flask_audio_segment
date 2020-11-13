@@ -6,6 +6,8 @@ flask run --host=0.0.0.0 --port=8083
 #### ubuntu install flask
 https://www.digitalocean.com/community/tutorials/how-to-install-the-django-web-framework-on-ubuntu-20-04
 
+sudo apt update
+sudo apt install python3-pip python3-venv
 
 
 #### run
