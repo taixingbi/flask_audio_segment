@@ -6,6 +6,8 @@ flask run --host=0.0.0.0 --port=8083
 #### ubuntu install flask
 https://www.digitalocean.com/community/tutorials/how-to-install-the-django-web-framework-on-ubuntu-20-04
 
+
+
 #### run
 ```
 python3 -m venv myvenv
@@ -13,6 +15,10 @@ source myvenv/bin/activate
 pip install --upgrade pip
 pip install -r requirements.txt
 ```
+
+sudo apt install ffmpeg
+
+
 
 http://3.86.17.19:8083/api/segment
 
