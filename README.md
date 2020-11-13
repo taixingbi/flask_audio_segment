@@ -3,6 +3,9 @@
 flask run --host=0.0.0.0 --port=8083
  ```  
 
+#### ubuntu install flask
+https://www.linuxfordevices.com/tutorials/ubuntu/install-flask-ubuntu
+
 #### run
 ```
 python3 -m venv myvenv
