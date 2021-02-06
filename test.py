@@ -1,40 +1,47 @@
-from flask import Flask, request, render_template
-from flask import jsonify
+import time, json, requests
 
-import tensorflow
-from inaSpeechSegmenter import segment
-# from test import test
+class step1_1_segs:
+    def __init__(self, model, path, audio_name):
+        print("\n-------------------pipeline12_generate_segs-------------------", audio_name )
+        self.model= model #cnn/ svm
+        self.path= path
+        self.audio_name= audio_name
 
-# from svm_pyAudioAnalysis import svm_pyAudioAnalysis
-# from cnn_inaSpeechSegmenter import cnn_inaSpeechSegmenter
-# class svm_pyAudioAnalysis:
-#     def __init__(self):
-#         print("\npyAudioAnalysis_svm init...")
-#         self.e= .03
+    def api_post(self, data):
+        # URL= 'http://3.86.17.19:8083/api/segment'
+        URL= 'http://127.0.0.1:8091/api/segment'
 
-#     def segmentation(self, path, file):
-#         Fs, x= audioBasicIO.read_audio_file( path + file)
+        jsonData = json.dumps(data)
+        print(jsonData)
+        headers = {'Content-type': 'application/json', 'Accept': 'text/plain'}
+        r = requests.post(  URL,
+                            data= jsonData,
+                            headers= headers)
 
-#         segmentations = audioSegmentation.silence_removal(x, Fs, 0.020, 0.020, smooth_window = 1.0, weight = 0.3, plot = False)
-#         duration= len(x)/Fs 
-#         print(duration)
-#         # print(segmentation)
-            
-#         segs=[]
-#         for i, seg in enumerate(segmentations):
-#             if seg[0] > self.e: #head
-#                 segs.append( [ "notSpeech", int(0), int(seg[0]*1000) ] )
+        return r
 
-#             segs.append( [ "speech", int(seg[0]*1000), int(seg[1]*1000) ] )
+    def call_api_segment(self):
+        data_req= {
+            "model": self.model, 
+            "path": self.path,
+            "file": self.audio_name + '.wav'
+        }
 
-#             if i==len(segmentations)-1 and seg[1] < (duration - self.e) :  # tail
-#                 segs.append( [ "notSpeech", int(seg[1]*1000), int(duration*1000) ] )
-        
-#         print(segs)
-#         return segs
+        time_try_again= 1
+        while time_try_again >= 0:
+            r= self.api_post(data_req)
+            print(r.status_code)
+            if r.status_code == 200:
+                return r.json()['segments']
 
+            time_try_again= time_try_again -1
 
-def test():
-    print("test")
+        return []
 
-test()
+if __name__=="__main__":
+    model= "cnn"
+    path= "data/"
+    file= "test"
+
+    segs= step1_1_segs(model, path, file).call_api_segment()
+    print(segs)
